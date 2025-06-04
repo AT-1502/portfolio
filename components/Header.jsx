@@ -94,7 +94,7 @@ const Header = () => {
         </a>
 
         <a
-          href="/resume.pdf"
+          href="/M-Resume.pdf"
           download
           className="text-sm px-5 py-2 bg-gradient-to-r from-purple-600 to-indigo-500 text-white rounded-full hover:from-purple-700 hover:to-indigo-600 transition flex items-center gap-2 shadow-lg"
         >
