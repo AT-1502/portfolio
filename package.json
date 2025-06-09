@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.31.6",
     "clsx": "^2.1.1",
     "framer-motion": "^12.15.0",
     "lucide-react": "^0.511.0",
@@ -18,15 +19,15 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hot-toast": "^2.5.2",
-    "react-intersection-observer": "^9.16.0",
-    "@clerk/clerk-react": "^5.31.6"
+    "react-intersection-observer": "^9.16.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@eslint/js": "^9.25.0",
+    "@tailwindcss/postcss": "^4",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "@tailwindcss/postcss": "^4",
+    "@vitejs/plugin-react": "^4.4.1",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.25.0",
     "eslint-config-next": "15.3.3",
@@ -35,7 +36,6 @@
     "globals": "^16.0.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^4",
-    "vite": "^6.3.5",
-    "@vitejs/plugin-react": "^4.4.1"
+    "vite": "^6.3.5"
   }
 }

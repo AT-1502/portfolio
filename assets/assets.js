@@ -112,6 +112,9 @@ export const infoList = [
     { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
 ];
 
-export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb , assets.git
+export const tools = [
+  { icon: assets.vscode, name: 'VS Code' },
+  { icon: assets.firebase, name: 'Firebase' },
+  { icon: assets.mongodb, name: 'MongoDB' },
+  { icon: assets.git, name: 'Git' },
 ];

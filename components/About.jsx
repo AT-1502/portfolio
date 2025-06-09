@@ -1,7 +1,7 @@
 'use client'
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
-import { infoList, toolsData } from '@/assets/assets'
+import { infoList, tools } from '@/assets/assets' // assuming tools = [{ icon, name }, ...]
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 const container = {
@@ -30,6 +30,24 @@ const fadeUp = {
 const About = () => {
   const { scrollY } = useScroll()
   const planeX = useTransform(scrollY, [0, 1000], ['-10%', '110%'])
+
+  // For hover name display in tools section
+  const [visibleIndex, setVisibleIndex] = useState(null)
+  const timerRef = useRef(null)
+
+  const handleMouseEnter = (index) => {
+    if (timerRef.current) clearTimeout(timerRef.current)
+    setVisibleIndex(index)
+
+    timerRef.current = setTimeout(() => {
+      setVisibleIndex(null)
+    }, 5000)
+  }
+
+  const handleMouseLeave = () => {
+    if (timerRef.current) clearTimeout(timerRef.current)
+    setVisibleIndex(null)
+  }
 
   return (
     <div id="about" className="relative overflow-hidden -mt-16 transition-colors duration-500">
@@ -73,7 +91,7 @@ const About = () => {
               className="text-base leading-8 text-gray-600 dark:text-gray-400 max-w-2xl transition-colors duration-500"
             >
               Hello! I'm a <span className="font-semibold text-indigo-600 dark:text-indigo-400">passionate web developer</span> who loves crafting engaging, modern, and interactive websites. My goal is to make
-              beautiful web applications using HTML, CSS, JavaScript, frameworks like React ,Next.js and backend with nodejs.
+              beautiful web applications using HTML, CSS, JavaScript, frameworks like React, Next.js and backend with Node.js.
             </motion.p>
 
             {/* Info List */}
@@ -102,7 +120,7 @@ const About = () => {
                     <h3 className="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-500">
                       {title}
                     </h3>
-                    <p className="text-sm text-gray-600  dark:text-gray-400 transition-colors duration-500">
+                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-500">
                       {description}
                     </p>
                   </div>
@@ -114,21 +132,28 @@ const About = () => {
             <div className="pt-4">
               <motion.h4
                 variants={fadeUp}
-                className="text-xl font-bold mb-4 text-indigo-600 dark:text-indigo-400 transition-colors duration-500"
+                className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 transition-colors duration-500 text-center md:text-left"
               >
                 Tools I Use
               </motion.h4>
               <motion.ul
                 variants={container}
-                className="flex flex-wrap gap-4"
+                className="flex flex-wrap gap-4 justify-center md:justify-start"
               >
-                {toolsData.map((tool, index) => (
+                {tools.map(({ icon, name }, index) => (
                   <motion.li
                     key={index}
                     variants={fadeUp}
-                    className="p-2 bg-gray-100 dark:bg-gray-800 rounded-xl shadow hover:scale-110 transition-transform duration-300"
+                    className="flex flex-col items-center p-3 w-20 sm:w-24 bg-gradient-to-tr from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 rounded-xl shadow-lg hover:shadow-2xl hover:scale-110 transition-transform duration-300 cursor-pointer"
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
                   >
-                    <Image src={tool} alt="tool" width={28} height={28} />
+                    <Image src={icon} alt={name} width={28} height={28} />
+                    {visibleIndex === index && (
+                      <span className="mt-1 text-xs font-medium text-gray-800 dark:text-gray-300 transition-opacity duration-300 text-center break-words">
+                        {name}
+                      </span>
+                    )}
                   </motion.li>
                 ))}
               </motion.ul>

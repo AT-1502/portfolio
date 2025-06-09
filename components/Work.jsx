@@ -5,22 +5,23 @@ import { motion } from 'framer-motion'
 import { Github } from 'lucide-react'
 
 const projects = [
+{
+  title: 'Task Management App',
+  description:
+    'A full-stack task management application with features like authentication, task categorization, and seamless user experience. Includes intuitive task creation, editing, and filtering options. Built with responsive design and smooth animations using Tailwind CSS for enhanced usability across devices.',
+  tech: ['React', 'Tailwind', 'Express', 'MongoDB'],
+  github: 'https://github.com/AT-1502/Task-management',
+  image: '/work01.png',
+}
+,
   {
-    title: 'Task Management App',
-    description:
-      'A full-stack task management application with features like authentication, task categorization, and seamless user experience.',
-    tech: ['React', 'Tailwind', 'Express', 'MongoDB'],
-    github: 'https://github.com/AT-1502/Task-management',
-    image: '/work01.png',
-  },
-  {
-    title: 'Chat Application',
-    description:
-      'A real-time chat app featuring instant messaging, sleek UI, theme toggle, and socket-based message delivery.',
-    tech: ['React', 'Express', 'MongoDB', 'Socket.io'],
-    github: 'https://github.com/AT-1502/Chat_application',
-    image: '/work02.jpg',
-  },
+    "title": "Chat Application",
+    "description": "A dynamic real-time chat application with instant messaging, a sleek UI, theme toggle, and live message delivery powered by Socket.IO. Features include real-time notifications using React Hot Toast, ensuring users receive instant alerts for new messages and updates.",
+    "tech": ["React", "Express", "MongoDB", "Socket.IO", "React Hot Toast"],
+    "github": "https://github.com/AT-1502/Chat_application",
+    "image": "/work02.jpg"
+},
+
   {
     title: 'AI Chatbot',
     description:

@@ -11,7 +11,6 @@ const navLinks = [
   { href: '#about', label: 'About Me' },
   { href: '#services', label: 'Services' },
   { href: '#work', label: 'My Work' },
-  { href: '#contact', label: 'Contact Me' },
 ]
 
 const Navbar = ({ darkMode, setDarkMode }) => {

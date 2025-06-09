@@ -66,7 +66,7 @@ const Contact = ({ darkMode }) => {
             type="text"
             name="name"
             required
-            placeholder="yash jain"
+            placeholder="Your name"
             className={`w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition
               ${
                 darkMode

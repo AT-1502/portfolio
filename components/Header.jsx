@@ -3,8 +3,40 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { assets } from '@/assets/assets'
+import toast from 'react-hot-toast'
 
 const Header = () => {
+const handleResumeDownload = async () => {
+  try {
+    const response = await fetch('/AkshatResume.pdf'); 
+    if (!response.ok) throw new Error('Download failed');
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'AkshatResume.pdf';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+
+    toast.success('Resume downloaded successfully!', {
+      duration: 1000,
+      position: 'top-right',
+    });
+  } catch (error) {
+    toast.error('Failed to download resume. Please check your network.', {
+      duration: 1000,
+      position: 'top-right',
+    });
+  }
+};
+
+
+
+
   return (
     <motion.section
       id="top"
@@ -94,8 +126,9 @@ const Header = () => {
         </a>
 
         <a
-          href="/M-Resume.pdf"
+          href="/AkshatResume.pdf"
           download
+          onClick={handleResumeDownload}
           className="text-sm px-5 py-2 bg-gradient-to-r from-purple-600 to-indigo-500 text-white rounded-full hover:from-purple-700 hover:to-indigo-600 transition flex items-center gap-2 shadow-lg"
         >
           My Resume

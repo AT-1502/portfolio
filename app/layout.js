@@ -1,5 +1,6 @@
 import { Roboto, Open_Sans } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 // Font configuration
 const OpenSans = Open_Sans({
@@ -12,24 +13,22 @@ const Robotos = Roboto({
   variable: "--font-roboto",
 });
 
-// Metadata configuration (including favicon)
 export const metadata = {
   title: "Portfolio",
   description: "Portfolio of a web developer",
   icons: {
-    icon: "/home.png",       // Main favicon
-    shortcut: "/home.png",   // Shortcut icon
-    apple: "/home.png",      // iOS icon (optional)
+    icon: "/home.png",
+    shortcut: "/home.png",
+    apple: "/home.png",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      
-      <head />
-      <body className={`${Robotos.variable} ${OpenSans.variable} antialiased`}>
+    <html lang="en" className={`${Robotos.variable} ${OpenSans.variable}`}>
+      <body className="antialiased">
         {children}
+        <Toaster position="top-right" />
       </body>
     </html>
   );
